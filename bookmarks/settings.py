@@ -26,20 +26,21 @@ SECRET_KEY = '_09e)sd7dawur34hyr8cg5#huen5&52!52(y)khq+yufv%pyn0'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 LOGIN_REDIRECT_URL=reverse_lazy('dashboard')
 LOGIN_URL=reverse_lazy('login')
 LOGOUT_URL=reverse_lazy('logout')
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'account',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account',
+    'django.contrib.admin',
+    
 ]
 
 MIDDLEWARE_CLASSES = [
