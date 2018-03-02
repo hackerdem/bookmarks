@@ -24,7 +24,8 @@ SECRET_KEY = '_09e)sd7dawur34hyr8cg5#huen5&52!52(y)khq+yufv%pyn0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR,'media/')
 ALLOWED_HOSTS = []
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 LOGIN_REDIRECT_URL=reverse_lazy('dashboard')
@@ -34,12 +35,13 @@ LOGOUT_URL=reverse_lazy('logout')
 
 INSTALLED_APPS = [
     'account',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admin',
+    
     
 ]
 
