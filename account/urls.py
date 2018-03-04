@@ -22,5 +22,6 @@ urlpatterns=[
     password_reset_complete,
     name='password_reset_complete'),
     url(r'^register/$',views.register,name='register'),
+    
     ]
 

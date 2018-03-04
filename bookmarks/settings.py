@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social.apps.django_app.default',
+    
     
     
 ]
@@ -55,6 +57,17 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTHENTICATION_BACKENDS=(
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+    'social.backends.facebook.Facebook2OAuth2',
+)
+
+
+SOCIAL_AUTH_FACEBOOK_KEY = '350947955403826' # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '2a65161f28bf963c36ce790a2db2745a' # Facebook App Secret
+
 
 ROOT_URLCONF = 'bookmarks.urls'
 

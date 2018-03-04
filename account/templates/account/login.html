@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 {% block title %}Log-in{% endblock %}
 {% block content %}
+<div class="social">
+    <ul>
+    <li class="facebook"><a href="{% url "social:begin" "facebook"
+    %}">Sign in with Facebook</a></li>
+    </ul>
+    </div>
 <h1>Log-in</h1>
+
 <p>Please, use the following form to log-in:</p>
 <form action="." method="post">
 {{ form.as_p }}
