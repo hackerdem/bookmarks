@@ -26,7 +26,7 @@ SECRET_KEY = '_09e)sd7dawur34hyr8cg5#huen5&52!52(y)khq+yufv%pyn0'
 DEBUG = True
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media/')
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mymy.com']
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 LOGIN_REDIRECT_URL=reverse_lazy('dashboard')
 LOGIN_URL=reverse_lazy('login')
@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
+    'social_django',
+    'images',
     
     
     
@@ -56,19 +58,25 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 AUTHENTICATION_BACKENDS=(
+    'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
-    'social.backends.facebook.Facebook2OAuth2',
+    'social.backends.twitter.TwitterOAuth',
+    'social.backends.google.GoogleOAuth2',
+    
 )
 
 
 SOCIAL_AUTH_FACEBOOK_KEY = '350947955403826' # Facebook App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '2a65161f28bf963c36ce790a2db2745a' # Facebook App Secret
-
-
+SOCIAL_AUTH_TWITTER_KEY = 'zKetJnrZ9FCktEcyZbH5dGHJV' # Twitter Consumer Key
+SOCIAL_AUTH_TWITTER_SECRET = 'ebgIlpe4hD7CURhIoR7Om0Tk47TW9zCOBmJQclUPYuzkIsmF3T' # Twitter Consumer Secret
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'QBG9VoUFFMmXrfjEfk_9Di6S' # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '964327268917-8551e9tdaorsqim867s6sdbundqah6l1.apps.googleusercontent.com' # Google Consumer Secret
 ROOT_URLCONF = 'bookmarks.urls'
 
 TEMPLATES = [
@@ -82,6 +90,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
