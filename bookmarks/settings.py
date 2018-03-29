@@ -25,6 +25,7 @@ SECRET_KEY = '_09e)sd7dawur34hyr8cg5#huen5&52!52(y)khq+yufv%pyn0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+default_app_config='images.apps.ImagesConfig'
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media/')
 ALLOWED_HOSTS = ['mymy.com']
@@ -35,6 +36,7 @@ LOGOUT_URL=reverse_lazy('logout')
 # Application definition
 
 INSTALLED_APPS = [
+    'actions',
     'sorl.thumbnail',
     'account',
     'django.contrib.admin',
@@ -135,6 +137,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
+ABSOLUTE_URL_OVERRIDES={
+    'auth.user':lambda u:reverse_lazy('user_detail',args=[u.username])
+
+}
 
 LANGUAGE_CODE = 'en-us'
 

@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 class Image(models.Model):
     user=models.ForeignKey(settings.AUTH_USER_MODEL,related_name='images_created')
     title=models.CharField(max_length=200)
+    total_likes=models.PositiveIntegerField(db_index=True,default=0)
     slug=models.SlugField(max_length=200,blank=True)
     url=models.URLField()
     image=models.ImageField(upload_to='images/%Y/%m/%d')
